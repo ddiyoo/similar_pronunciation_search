@@ -7,6 +7,18 @@ def extract_regiNum(strings):
     numbers = list(map(int, numbers)) ## convert type string->int
     return numbers
 
+def making_registrationNumber(num):
+    if len(num) == 5:
+        a = '40' + '00' + str(registrationNum) + '0000'
+        b = '41' + '00' + str(registrationNum) + '0000'
+        c = '45' + '00' + str(registrationNum) + '0000'
+    elif len(registrationNum) == 6:
+        a = '40' + '0' + str(registrationNum) + '0000'
+        b = '41' + '0' + str(registrationNum) + '0000'
+        c = '45' + '0' + str(registrationNum) + '0000'
+
+        return a,b,c
+
 def collect_appliNum(registrationNum):
     appliNum_url =f"http://plus.kipris.or.kr/openapi/rest/RegistrationService/registrationInfo?registrationNumber={registrationNum}&accessKey={api_key}"
     response_appliNum = urllib.request.urlopen(appliNum_url)
@@ -29,4 +41,3 @@ def collect_tradName(applicationNumber):
         'TrademarkEnglishsentenceName']
 
     return TrademarkHangeulName, TrademarkEnglishsentenceName
-
